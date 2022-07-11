@@ -1,8 +1,13 @@
 # devcycle-react
 
-> An alternative devcycle react component library.
+> An alternative devcycle react component library with silent fallback behaviour.
 
 [![NPM](https://img.shields.io/npm/v/devcycle-react.svg)](https://www.npmjs.com/package/devcycle-react)
+
+## Motivation
+
+The original [`@devcycle/devcycle-react-sdk`](https://github.com/DevCycleHQ/js-sdks) has questionable error handling.
+It throws errors from inside React hooks which are hard to handle (e.g. when used with Storybook with no real devcycle environment key).
 
 ## Install
 
