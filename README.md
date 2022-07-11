@@ -2,7 +2,7 @@
 
 > An alternative devcycle react component library.
 
-[![NPM](https://img.shields.io/npm/v/devcycle-react.svg)](https://www.npmjs.com/package/devcycle-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/devcycle-react.svg)](https://www.npmjs.com/package/devcycle-react)
 
 ## Install
 
