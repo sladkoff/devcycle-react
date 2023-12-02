@@ -28,7 +28,7 @@ export function useFeatureFlag<T extends DVCVariableValue>(
 
     client.subscribe(
       `variableUpdated:${key}`,
-      (_key: string, variable: DVCVariable) => {
+      (_key: string, variable: DVCVariable<DVCVariableValue> | null) => {
         setValue(variable?.value ?? defaultValue);
       }
     );
