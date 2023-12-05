@@ -1,11 +1,13 @@
+import {
+  DevCycleOptionsWithDeferredInitialization,
+  initializeDevCycle,
+} from '@devcycle/devcycle-js-sdk';
 import React, { FC, useMemo, useState } from 'react';
-import { DVCOptions, DVCUser, initialize } from '@devcycle/devcycle-js-sdk';
 import { DevcycleContext } from './DevcycleContext';
 
 type ProviderConfig = {
   envKey: string;
-  user?: DVCUser;
-  options?: DVCOptions;
+  options?: DevCycleOptionsWithDeferredInitialization;
 };
 
 type Props = {
@@ -14,18 +16,17 @@ type Props = {
 };
 
 export const DevcycleProvider: FC<Props> = ({ config, children }) => {
-  const { envKey, user, options } = config;
+  const { envKey, options } = config;
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const client = useMemo(() => {
     try {
       setIsLoading(true);
-      return initialize(
+      return initializeDevCycle(
         envKey,
-        user ?? {
-          isAnonymous: true,
-        },
-        options
+        options ?? {
+          deferInitialization: true,
+        }
       );
     } catch (e) {
       setIsError(true);
@@ -33,7 +34,7 @@ export const DevcycleProvider: FC<Props> = ({ config, children }) => {
     } finally {
       setIsLoading(false);
     }
-  }, [envKey, user, options]);
+  }, [envKey, options]);
 
   return (
     <DevcycleContext.Provider
